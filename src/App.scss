@@ -1,0 +1,47 @@
+$paleGreen: RGB(194,238,95);
+$lightGreen: RGB(157,215,41);
+$green: RGB(100,174,17);
+$greyGreen: RGB(77,118,79);
+$width: 600px;
+$height: 325px;
+
+#drum-machine {
+  width: $width;
+  height: $height;
+  background: $paleGreen;
+  margin: auto;  
+  display:flex;
+  justify-content: center;
+  border: 4px solid orange;
+  
+}
+
+.padContainer {
+  width: 55%;
+  height: 85%;
+  margin: auto; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+#display {
+  width: 30%;
+  height: 25%;
+  background-color: $greyGreen;
+  margin: auto;
+}
+
+.drum-pad{
+  width: 30%;
+  height: 30%;
+  box-sizing: border-box;
+  background-color: $green;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 4px 4px 3px $greyGreen;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
