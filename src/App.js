@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, {
+  Component
+} from 'react';
 import './App.scss';
 
 const bankOne = [{
@@ -46,79 +48,107 @@ const bankOne = [{
   keyTrigger: 'C',
   id: 'Closed-HH',
   url: 'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3'
-},
-];
-class DrumPad extends Component{
-  constructor(props){
+}, ];
+class DrumPad extends Component {
+  constructor(props) {
     super(props);
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.playSound = this.playSound.bind(this)
   }
-  componentDidMount(){
-    document.addEventListener('keydown',this.handleKeyPress)
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress)
   }
-  componentWillUnmount(){
-    document.removeEventListener('keydown',this.handleKeyPress)
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress)
   }
-  handleKeyPress(e){
-    if(e.keyCode === this.props.keyCode){
+  handleKeyPress(e) {
+    if (e.keyCode === this.props.keyCode) {
       console.log(e.keyCode)
       this.playSound();
     }
   }
-  playSound(){
+  playSound() {
     const sound = document.getElementById(this.props.keyTrigger);
     sound.play();
     this.props.updateDisplay(this.props.name);
   }
-  render(){ 
-    return (
-      <div className = "drum-pad" onClick = {this.playSound} id = {this.props.id}>
-        {this.props.keyTrigger}
-        <audio className="clip" id = {this.props.keyTrigger} src = {this.props.url}></audio>
-      </div>
+  render() {
+    return ( <
+      div className = "drum-pad"
+      onClick = {
+        this.playSound
+      }
+      id = {
+        this.props.id
+      } > {
+        this.props.keyTrigger
+      } <
+      audio className = "clip"
+      id = {
+        this.props.keyTrigger
+      }
+      src = {
+        this.props.url
+      } > < /audio> < /
+      div >
     )
   }
 }
 
-class App extends React.Component{
-  constructor(props){
+class App extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       display: '',
     }
     this.updateDisplay = this.updateDisplay.bind(this);
   }
-  updateDisplay(name){
+  updateDisplay(name) {
     this.setState({
       display: name
     })
   }
-  render(){
+  render() {
     const padBank = bankOne.map(
-      (pad)=>{
-        return(
-          <DrumPad
-            keyCode = {pad.keyCode}
-            keyTrigger = {pad.keyTrigger}
-            url = {pad.url}
-            name = {pad.id}
-            id = {pad.id}
-            updateDisplay = {this.updateDisplay}/>
+      (pad) => {
+        return ( <
+          DrumPad keyCode = {
+            pad.keyCode
+          }
+          keyTrigger = {
+            pad.keyTrigger
+          }
+          url = {
+            pad.url
+          }
+          name = {
+            pad.id
+          }
+          id = {
+            pad.id
+          }
+          updateDisplay = {
+            this.updateDisplay
+          }
+          />
         )
       }
     )
-    return(
-      <div>
-        <div id = "drum-machine" >
-          <div className = "padContainer">
-            {padBank}
-          </div>
-          <div id = "display">
-            {this.state.display}
-          </div>
-        </div>
-      </div>
+    return ( <
+      div >
+      <
+      div id = "drum-machine" >
+      <
+      div className = "padContainer" > {
+        padBank
+      } <
+      /div> <
+      div id = "display" > {
+        this.state.display
+      } <
+      /div> < /
+      div > <
+      /div>
     )
   }
 }
